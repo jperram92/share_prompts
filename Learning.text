@@ -1,0 +1,34 @@
+File Structure Explanation
+Dynamic Routes:
+
+app/posts/[postId]: This is a dynamic route. The [postId] folder signifies that this is a dynamic segment of the URL. When a user navigates to /posts/123 (for example), the postId will be set to 123, and this page will be rendered.
+app/posts/new: This is a static route, used for creating new posts. It maps directly to /posts/new.
+Nested Routes:
+
+app/posts: This folder defines the base /posts route. Inside, you can have other nested routes like [postId] or new.
+Layout and Error Handling:
+
+app/layout.js: This file is used to define the layout for your application or specific sections. Layouts can be shared across multiple pages in your app.
+app/error.js: Handles error boundaries. It catches errors in the app's routing and rendering process, displaying a fallback UI.
+app/loading.js: This file handles the loading state, showing a loader while the page content is being fetched or rendered.
+Other Files:
+
+globals.css: Contains global CSS styling for the app.
+favicon.ico: A file used for the site's icon in the browser tab.
+How Routing Works in Next.js (with App Directory)
+Page Files: Every .js file (like page.js or new.js) inside the app directory corresponds to a route. For example, app/posts/page.js maps to /posts, and app/posts/[postId]/page.js maps to /posts/:postId.
+
+Dynamic Routes:
+
+In app/posts/[postId], [postId] is a dynamic segment. It can match any value in the URL. The value of postId can be accessed using hooks like useRouter in React.
+Layouts:
+
+app/layout.js will wrap all pages under it, such as /posts, /posts/new, and dynamic routes like /posts/[postId]. You can define layout-specific UI elements, such as a sidebar or navigation menu.
+Error and Loading:
+
+app/error.js handles errors for the app or specific parts of it. It’s part of Next.js' built-in error handling system.
+app/loading.js is used for showing a loading state when a page is being fetched, useful for slower or data-heavy pages.
+Example Route Behavior:
+/posts will load app/posts/page.js.
+/posts/new will load app/posts/new.js.
+/posts/:postId (e.g., /posts/1) will load app/posts/[postId]/page.js.
